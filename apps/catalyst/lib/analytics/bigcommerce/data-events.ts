@@ -60,7 +60,7 @@ export async function sendProductViewedEvent({
 }: ProductViewedEvent) {
   const input = {
     commonInput: preareCommonInput(initiator, request),
-    productInput: { productEntityId: Number(productId) },
+    productInput: { productEntityId: productId },
   };
 
   return await client.fetch({

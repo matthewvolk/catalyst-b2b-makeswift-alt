@@ -95,7 +95,7 @@ export default async function Product({ params, searchParams }: Props) {
       );
 
     const variables = {
-      entityId: Number(productId),
+      entityId: productId,
       optionValueIds,
       useDefaultOptionSelections: true,
     };
@@ -126,7 +126,7 @@ export default async function Product({ params, searchParams }: Props) {
     const currencyCode = await getPreferredCurrencyCode();
 
     const variables = {
-      entityId: Number(productId),
+      entityId: productId,
       optionValueIds,
       useDefaultOptionSelections: true,
       currencyCode,

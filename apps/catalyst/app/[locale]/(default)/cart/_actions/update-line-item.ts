@@ -151,7 +151,7 @@ export const updateLineItem = async (
             case 'CartSelectedDateFieldOption':
               dateFieldOptionInput = {
                 optionEntityId: option.entityId,
-                date: new Date(String(option.date.utc)).toISOString(),
+                date: new Date(option.date.utc).toISOString(),
               };
 
               if (accum.dateFields) {
@@ -305,7 +305,7 @@ export const updateLineItem = async (
             case 'CartSelectedDateFieldOption':
               dateFieldOptionInput = {
                 optionEntityId: option.entityId,
-                date: new Date(String(option.date.utc)).toISOString(),
+                date: new Date(option.date.utc).toISOString(),
               };
 
               if (accum.dateFields) {

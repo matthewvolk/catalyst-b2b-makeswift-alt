@@ -9,7 +9,7 @@ export const formFieldTransformer = (
   field: FragmentOf<typeof FormFieldsFragment> & { name?: string },
 ): Field | null => {
   // If the field name is provided, use it; otherwise, fallback to the entityId mapped name or label.
-  const name = field.name ?? FieldNameToFieldId[Number(field.entityId)] ?? field.label;
+  const name = field.name ?? FieldNameToFieldId[field.entityId] ?? field.label;
 
   switch (field.__typename) {
     case 'CheckboxesFormField':

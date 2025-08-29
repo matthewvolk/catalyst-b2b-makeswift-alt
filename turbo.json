@@ -1,5 +1,24 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
-  "tasks": {}
+  "tasks": {
+    "dev": {
+      "persistent": true,
+      "cache": false,
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
+    "lint": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    },
+    "typecheck": {
+      "dependsOn": ["^typecheck"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+    },
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"]
+    }
+  }
 }

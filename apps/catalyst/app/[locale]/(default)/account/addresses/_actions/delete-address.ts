@@ -81,9 +81,7 @@ export async function deleteAddress(prevState: Awaited<State>, formData: FormDat
     expireTag(TAGS.customer);
 
     return {
-      addresses: prevState.addresses.filter(
-        (address) => address.id !== String(submission.value.id),
-      ),
+      addresses: prevState.addresses.filter((address) => address.id !== submission.value.id),
       lastResult: submission.reply({ resetForm: true }),
       defaultAddress: prevState.defaultAddress,
       fields: prevState.fields,
