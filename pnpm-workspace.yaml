@@ -1,3 +1,5 @@
 packages:
-  - "apps/*"
-  - "!apps/b2b-buyer-portal"
+  - 'apps/*'
+  - 'apps/b2b-buyer-portal/apps/*'
+  - 'apps/b2b-buyer-portal/packages/*'
+
