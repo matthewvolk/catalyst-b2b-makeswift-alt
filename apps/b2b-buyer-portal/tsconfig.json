@@ -30,7 +30,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@/lib/*": ["./src/lib/*"],
-    },
+      "react": ["./node_modules/@types/react"]
+    }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js"],
   "exclude": ["node_modules"]
