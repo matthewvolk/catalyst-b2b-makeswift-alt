@@ -5,7 +5,10 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "typecheck": "turbo run typecheck",
-    "build": "turbo run build"
+    "predeploy": "node ./scripts/copy-b2b-dist.mjs",
+    "build:storefront": "turbo run build --filter=storefront",
+    "build:catalyst": "turbo run build --filter=@bigcommerce/catalyst-makeswift",
+    "build": "pnpm build:storefront && pnpm predeploy && pnpm build:catalyst"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
