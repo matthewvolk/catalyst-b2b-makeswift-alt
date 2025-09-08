@@ -13,12 +13,16 @@ export default defineConfig(({ mode }): UserConfig & Pick<ViteUserConfig, 'test'
     plugins: [legacy({ targets: ['defaults'] }), react()],
     experimental: {
       renderBuiltUrl(filename: string) {
-        const isCustomBuyerPortal = env.VITE_ASSETS_ABSOLUTE_PATH !== undefined;
-        return isCustomBuyerPortal
-          ? `${env.VITE_ASSETS_ABSOLUTE_PATH}${filename}`
-          : {
-              runtime: `window.b2b.__get_asset_location(${JSON.stringify(filename)})`,
-            };
+        let assetBasePath = env.VITE_ASSETS_ABSOLUTE_PATH;
+        if (assetBasePath === undefined && env.VERCEL_PROJECT_PRODUCTION_URL !== undefined) {
+          assetBasePath = env.VERCEL_PROJECT_PRODUCTION_URL;
+        }
+        if (assetBasePath !== undefined) {
+          return `${assetBasePath}${filename}`;
+        }
+        return {
+          runtime: `window.b2b.__get_asset_location(${JSON.stringify(filename)})`,
+        };
       },
     },
     server: {

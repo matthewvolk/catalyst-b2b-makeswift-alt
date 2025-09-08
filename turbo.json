@@ -1,6 +1,6 @@
 {
   "$schema": "https://turborepo.com/schema.json",
-  "ui": "tui",
+  "ui": "stream",
   "tasks": {
     "dev": {
       "persistent": true,
@@ -18,6 +18,10 @@
     },
     "build": {
       "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+    },
+    "start": {
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
     }
