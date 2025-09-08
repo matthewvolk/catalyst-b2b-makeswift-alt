@@ -1,5 +1,17 @@
 {
   "$schema": "https://turborepo.com/schema.json",
+  "globalEnv": [
+    "VITE_IS_LOCAL_ENVIRONMENT",
+    "VITE_LOCAL_APP_CLIENT_ID",
+    "VITE_B2B_URL",
+    "BIGCOMMERCE_STORE_HASH",
+    "BIGCOMMERCE_CHANNEL_ID",
+    "BIGCOMMERCE_STOREFRONT_TOKEN",
+    "AUTH_SECRET",
+    "B2B_API_TOKEN",
+    "B2B_API_HOST",
+    "MAKESWIFT_SITE_API_KEY"
+  ],
   "ui": "stream",
   "tasks": {
     "dev": {
