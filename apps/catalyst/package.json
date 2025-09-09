@@ -6,6 +6,9 @@
   "scripts": {
     "dev": "npm run generate && next dev",
     "generate": "dotenv -e .env.local -- node ./scripts/generate.cjs",
+    "predeploy": "node ../../scripts/copy-b2b-dist.mjs",
+    "build:storefront": "turbo run build --filter=storefront",
+    "prebuild": "pnpm build:storefront && pnpm predeploy",
     "build": "npm run generate && next build",
     "build:analyze": "ANALYZE=true npm run build",
     "start": "next start",
