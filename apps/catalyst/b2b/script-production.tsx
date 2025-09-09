@@ -21,23 +21,37 @@ export function ScriptProduction({ cartId, storeHash, channelId, token, environm
     <>
       <Script id="b2b-config">
         {`
+            window.b3CheckoutConfig = {
+              routes: {
+                dashboard: '/account.php?action=order_status',
+              },
+            };
             window.B3 = {
               setting: {
                 store_hash: '${storeHash}',
                 channel_id: ${channelId},
                 platform: 'catalyst',
                 cart_url: '/cart',
-              }
-            }
+              },
+              'dom.checkoutRegisterParentElement': '#checkout-app',
+              'dom.registerElement':
+                '[href^="/login.php"], #checkout-customer-login, [href="/login.php"] .navUser-item-loginLabel, #checkout-customer-returning .form-legend-container [href="#"]',
+              'dom.openB3Checkout': 'checkout-customer-continue',
+              before_login_goto_page: '/account.php?action=order_status',
+              checkout_super_clear_session: 'true',
+              'dom.navUserLoginElement': '.navUser-item.navUser-item--account',
+            };
         `}
       </Script>
       <Script
         data-channelid={channelId}
         data-environment={environment}
         data-storehash={storeHash}
-        src="/b2b/headless.js"
+        src="/b2b/index.js"
         type="module"
       />
+      <Script noModule src="/b2b/polyfills-legacy.js" />
+      <Script noModule src="/b2b/index-legacy.js" />
     </>
   );
 }
